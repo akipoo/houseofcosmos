@@ -1,7 +1,8 @@
 ---
 const { title, intro, crumb, eyebrow } = Astro.props;
 ---
-<section class="page-hero">
+<section class="page-hero deco rings r-white">
+  <img class="sun-half" src="/media/sun-half.webp" alt="" width="282" height="512" />
   <div class="container">
     <div class="crumbs"><a href="/">Home</a> / {crumb || title}</div>
     {eyebrow && <span class="eyebrow">{eyebrow}</span>}

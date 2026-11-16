@@ -68,10 +68,10 @@ export const awards = [
 ];
 
 export const stats = [
-  { n: '49.4', label: 'Lakh Sq.ft – Delivered' },
-  { n: '2', label: 'Lakh Sq.ft – Ongoing' },
-  { n: '60,000+', label: 'Families served' },
-  { n: '24+', label: 'Years of Legacy' },
+  { n: '49.4', count: '49.4', label: 'Lakh Sq.ft – Delivered' },
+  { n: '2', count: '2', label: 'Lakh Sq.ft – Ongoing' },
+  { n: '60,000+', count: '60000', suffix: '+', label: 'Families served' },
+  { n: '24+', count: '24', suffix: '+', label: 'Years of Legacy' },
 ];
 
 export const pillars = [

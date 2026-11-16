@@ -8,7 +8,7 @@ import M from '../data/media.json';
 <Base title="About House of Cosmos - Trusted Builders & Developers in Thane" description="Learn about House of Cosmos, a leading real estate developer in Thane known for premium residential projects, quality construction, and sustainable development.">
   <PageHero title="About Us" eyebrow="Our Story" intro="Designed for Tomorrow. Rooted in Legacy." />
 
-  <section class="section">
+  <section class="section deco rings">
     <div class="container split">
       <div>
         <img src={M.signature} alt="A Suraj Parmar Legacy" style="max-width:340px;height:auto;margin-bottom:1.5rem" loading="lazy" />
@@ -19,7 +19,7 @@ import M from '../data/media.json';
     </div>
   </section>
 
-  <section class="section cream">
+  <section class="section cream deco sunmark">
     <div class="container split">
       <div class="photo" style="aspect-ratio:1/1"><img src={M.aboutLegacy} alt="Thane skyline with the House of Cosmos sun mark" loading="lazy" width="1200" height="1200" /></div>
       <div>
@@ -41,14 +41,14 @@ import M from '../data/media.json';
     </div>
   </section>
 
-  <section class="section dark">
+  <section class="section dark deco lines">
     <div class="container">
       <h2 class="center" style="margin-bottom:2rem">A legacy built in numbers, defined by trust.</h2>
-      <div class="stats">{stats.map((s) => <div><b>{s.n}</b><span>{s.label}</span></div>)}</div>
+      <div class="stats">{stats.map((s) => <div><b data-count={s.count} data-suffix={s.suffix}>{s.n}</b><span>{s.label}</span></div>)}</div>
     </div>
   </section>
 
-  <section class="section cream">
+  <section class="section cream deco rings">
     <div class="container" style="max-width:900px">
       <div class="center"><span class="eyebrow">Leadership</span><h2>From the Desk of Our Founders</h2></div>
       <div class="grid g2" style="margin-top:2.5rem">

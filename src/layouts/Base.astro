@@ -22,6 +22,7 @@ const org = {
 <html lang="en-IN">
 <head>
   <meta charset="utf-8" />
+  <script is:inline>document.documentElement.classList.add("js")</script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
@@ -61,7 +62,7 @@ const org = {
 
   <main id="content"><slot /></main>
 
-  <footer class="site">
+  <footer class="site deco rings-l r-white">
     <div class="container">
       <div class="fgrid">
         <div>
@@ -118,6 +119,39 @@ const org = {
     document.querySelectorAll('[data-enquire]').forEach((el) => el.addEventListener('click', () => modal.showModal()));
     modal.querySelector('[data-close]')?.addEventListener('click', () => modal.close());
     modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
+
+    // Scroll reveal: staggered fade-up like the original site
+    const targets = document.querySelectorAll('main .section .container > *:not(.grid):not(.split):not(.carousel), main .grid > *, main .split > *, main .carousel > *, main .stats > *, main .pills > li, .page-hero .container > *');
+    targets.forEach((el) => {
+      const parent = el.parentElement!;
+      const i = Array.prototype.indexOf.call(parent.children, el);
+      el.classList.add('rv');
+      if (parent.classList.contains('split')) el.classList.add(i % 2 ? 'rv-r' : 'rv-l');
+      (el as HTMLElement).style.setProperty('--d', `${Math.min(i, 8) * 90}ms`);
+    });
+    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    targets.forEach((el) => io.observe(el));
+
+    // Count-up numbers
+    const counters = document.querySelectorAll('[data-count]');
+    const cio = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      const el = e.target as HTMLElement; cio.unobserve(el);
+      const end = parseFloat(el.dataset.count!); const dec = (el.dataset.count!.split('.')[1] || '').length;
+      const suffix = el.dataset.suffix || ''; const t0 = performance.now();
+      const step = (t: number) => {
+        const k = Math.min(1, (t - t0) / 1800); const v = end * (1 - Math.pow(1 - k, 4));
+        el.textContent = v.toLocaleString('en-IN', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suffix;
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    }), { threshold: 0.5 });
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) counters.forEach((c) => cio.observe(c));
+
+    // Flip cards on tap (touch screens)
+    document.querySelectorAll('.flip').forEach((f) => f.addEventListener('click', () => f.classList.toggle('on')));
   </script>
 </body>
 </html>

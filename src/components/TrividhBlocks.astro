@@ -4,7 +4,7 @@ import M from '../data/media.json';
 const { show = ['overview', 'green', 'amenities', 'location'] } = Astro.props;
 ---
 {show.includes('overview') && (
-<section class="section">
+<section class="section deco sunmark">
   <div class="container split">
     <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTower} alt="Trividh tower, Naupada, Thane West" loading="lazy" width="1200" height="1500" /></div>
     <div>
@@ -40,7 +40,7 @@ const { show = ['overview', 'green', 'amenities', 'location'] } = Astro.props;
 </section>
 )}
 {show.includes('amenities') && (
-<section class="section dark">
+<section class="section dark deco lines">
   <div class="container">
     <div class="center"><span class="eyebrow">Amenities</span><h2>Amenities For Everyday Ease</h2><p class="lead" style="margin-inline:auto">Premium amenities across a 10,000+ sq. ft. podium — active living, social spaces, and smart, secure homes.</p></div>
     <ul class="pills" style="justify-content:center;margin-top:2rem">{trividhAmenities.map((a) => <li>{a}</li>)}</ul>
@@ -48,7 +48,7 @@ const { show = ['overview', 'green', 'amenities', 'location'] } = Astro.props;
 </section>
 )}
 {show.includes('location') && (
-<section class="section">
+<section class="section deco rings-l">
   <div class="container split">
     <div>
       <span class="eyebrow">Location Advantage</span>

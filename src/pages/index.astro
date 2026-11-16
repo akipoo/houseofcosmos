@@ -5,6 +5,7 @@ import CtaBand from '../components/CtaBand.astro';
 import { projects, awards, blogs, stats, pillars, whyUs } from '../data/site.js';
 import M from '../data/media.json';
 const homeProjects = [projects[0], ...projects.filter((p) => p.home)];
+const icons = ['trophy-2', 'property', 'sustainable-building-1', 'domotics-1', 'green-city', 'trophy-2'];
 const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 ---
 <Base title="House of Cosmos Thane – Best Builders & Real Estate Developers in Thane" description="Discover House of Cosmos, one of the best builders in Thane offering premium residential projects, sustainable homes, and new project launches in prime locations.">
@@ -14,7 +15,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
     </video>
     <div class="container">
       <span class="eyebrow">House of Cosmos · Thane</span>
-      <h1>Designed for Tomorrow. Rooted in Legacy.</h1>
+      <h1><span class="ln"><span>Designed for Tomorrow.</span></span><span class="ln"><span style="--d:140ms">Rooted in Legacy.</span></span></h1>
       <p>Sustainable, design-led homes in the heart of Thane — carrying forward the legacy of Suraj Parmar.</p>
       <div class="btn-row">
         <a class="btn btn-gold" href="/trividh/">Explore Trividh</a>
@@ -23,15 +24,16 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
     </div>
   </section>
 
-  <section class="section">
+  <section class="section deco rings">
     <div class="container" style="max-width:900px;text-align:center">
+      <img class="brand-mark" src={M.logo} alt="House of Cosmos" width="250" height="64" />
       <img src={M.signature} alt="A Suraj Parmar Legacy" width="520" height="130" style="margin:0 auto 1.6rem;max-width:360px;height:auto" loading="lazy" />
       <p class="lead" style="margin-inline:auto;font-size:1.25rem;color:var(--text)">Few individuals leave behind a legacy that becomes a part of a city’s soul. Suraj Parmar did. His vision didn’t just shape Thane’s skyline, it gave it heart. Every structure he built, every idea he pursued, carried his belief that development must serve both people and nature. From pioneering initiatives like the Blue Revolution to standing up against red-tapism, he redefined what it meant to build with purpose.</p>
       <p class="lead" style="margin-inline:auto">House of Cosmos carries that spirit forward. Preserving his values, evolving his vision, and continuing to create spaces that inspire, include, and endure.</p>
     </div>
   </section>
 
-  <section class="section cream">
+  <section class="section cream deco sunmark">
     <div class="container split">
       <div class="photo" style="aspect-ratio:4/5"><img src={M.whoWeAre} alt="House of Cosmos sales experience centre" loading="lazy" width="1200" height="1500" /></div>
       <div>
@@ -44,42 +46,51 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
     </div>
   </section>
 
-  <section class="section">
+  <section class="section deco rings">
     <div class="container">
       <div class="center"><span class="eyebrow">Crafting</span><h2>Harnessing the Cosmos into Our Buildings</h2><p class="lead">At House of Cosmos, we draw inspiration from the universe itself, a system where balance, renewal, and purpose coexist seamlessly. Just like the cosmos, our communities are designed to live in harmony, with nature, with technology, and with one another.</p></div>
       <div class="grid g3" style="margin-top:2.5rem">
-        {pillars.map(([t, d], i) => <div class="pillar"><img src={M.pillars[i]} alt={t} loading="lazy" width="900" height="600" /><div><h3>{t}</h3><p>{d}</p></div></div>)}
+        {pillars.map(([t, d], i) => (
+          <div class="flip" tabindex="0">
+            <div class="flip-inner">
+              <div class="flip-face flip-front"><img src={M.pillars[i]} alt={t} loading="lazy" width="900" height="600" /><h3>{t}</h3><span class="hint">Discover ↻</span></div>
+              <div class="flip-face flip-back"><h3>{t}</h3><p>{d}</p></div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
 
-  <section class="section dark">
+  <section class="section dark deco lines">
     <div class="container">
       <h2 class="center" style="margin-bottom:2rem">A legacy built in numbers, defined by trust.</h2>
-      <div class="stats">{stats.map((s) => <div><b>{s.n}</b><span>{s.label}</span></div>)}</div>
+      <div class="stats">{stats.map((s) => <div><b data-count={s.count} data-suffix={s.suffix}>{s.n}</b><span>{s.label}</span></div>)}</div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section deco sunmark">
     <div class="container">
-      <div class="split" style="align-items:end;margin-bottom:2.2rem">
-        <div><span class="eyebrow">Projects</span><h2>Our Architectural Masterpieces</h2></div>
-        <div style="text-align:right"><a class="btn btn-line" href="/projects/" style="color:var(--ink)">View all projects →</a></div>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:1rem;margin-bottom:2.2rem">
+        <div><span class="eyebrow">Projects</span><h2 style="margin:0">Our Architectural Masterpieces</h2></div>
+        <div class="car-nav"><button aria-label="Previous projects" data-car="-1">←</button><button aria-label="Next projects" data-car="1">→</button><a class="btn btn-line" href="/projects/" style="color:var(--ink)">View all projects →</a></div>
       </div>
-      <div class="grid g3">{homeProjects.map((p) => <ProjectCard p={p} />)}</div>
+      <div class="carousel" id="projCar">{homeProjects.map((p) => <ProjectCard p={p} />)}</div>
     </div>
   </section>
 
-  <section class="section cream">
+  <section class="section cream deco rings">
     <div class="container">
       <div class="center"><span class="eyebrow">Crafting</span><h2>Why Choose House of Cosmos</h2></div>
-      <div class="grid g3" style="margin-top:2.5rem">
-        {whyUs.map(([t, d]) => <div class="card"><h3>{t}</h3><p style="margin:0;color:var(--muted)">{d}</p></div>)}
+      <div class="why-wrap">
+        <div class="col">{whyUs.slice(0, 3).map(([t, d], i) => <div class="card"><img src={`/media/icon-${icons[i]}.webp`} alt="" width="44" height="44" /><div><h3 style="font-size:1.25rem">{t}</h3><p style="margin:0;color:var(--muted)">{d}</p></div></div>)}</div>
+        <div class="logo-col"><img src={M.logo} alt="House of Cosmos" width="240" height="62" /></div>
+        <div class="col">{whyUs.slice(3).map(([t, d], i) => <div class="card"><img src={`/media/icon-${icons[i + 3]}.webp`} alt="" width="44" height="44" /><div><h3 style="font-size:1.25rem">{t}</h3><p style="margin:0;color:var(--muted)">{d}</p></div></div>)}</div>
       </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section deco rings-l">
     <div class="container">
       <div class="center"><span class="eyebrow">Crafting</span><h2>Awards & Recognition</h2><p class="lead">Awards that honour our pursuit of timeless quality.</p></div>
       <div class="grid g3" style="margin-top:2rem">
@@ -88,7 +99,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
     </div>
   </section>
 
-  <section class="section bg-photo">
+  <section class="section bg-photo quote-bg">
     <img src={M.channelBg} alt="" loading="lazy" />
     <div class="container split">
       <div>
@@ -115,7 +126,7 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
     </div>
   </section>
 
-  <section class="section">
+  <section class="section deco rings r-dark">
     <div class="container">
       <div class="split" style="align-items:end;margin-bottom:2.2rem">
         <div><span class="eyebrow">Insights</span><h2>From our blog</h2></div>
@@ -133,4 +144,11 @@ const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', mon
   </section>
 
   <CtaBand />
+  <script>
+    const car = document.getElementById('projCar');
+    document.querySelectorAll('[data-car]').forEach((b) => b.addEventListener('click', () => {
+      const card = car!.firstElementChild as HTMLElement;
+      car!.scrollBy({ left: Number((b as HTMLElement).dataset.car) * (card.offsetWidth + 19), behavior: 'smooth' });
+    }));
+  </script>
 </Base>
