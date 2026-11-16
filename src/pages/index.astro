@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { projects, awards, blogs, stats, pillars, whyUs } from '../data/site.js';
+import M from '../data/media.json';
+const homeProjects = [projects[0], ...projects.filter((p) => p.home)];
+const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<Base title="House of Cosmos Thane – Best Builders & Real Estate Developers in Thane" description="Discover House of Cosmos, one of the best builders in Thane offering premium residential projects, sustainable homes, and new project launches in prime locations.">
+  <section class="hero">
+    <video autoplay muted loop playsinline preload="metadata" poster="/media/hero-poster.jpg">
+      <source src="/media/hero.mp4" type="video/mp4" />
+    </video>
+    <div class="container">
+      <span class="eyebrow">House of Cosmos · Thane</span>
+      <h1>Designed for Tomorrow. Rooted in Legacy.</h1>
+      <p>Sustainable, design-led homes in the heart of Thane — carrying forward the legacy of Suraj Parmar.</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href="/trividh/">Explore Trividh</a>
+        <button class="btn btn-line" data-enquire style="color:#fff">Book a Site Visit</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:900px;text-align:center">
+      <img src={M.signature} alt="A Suraj Parmar Legacy" width="520" height="130" style="margin:0 auto 1.6rem;max-width:360px;height:auto" loading="lazy" />
+      <p class="lead" style="margin-inline:auto;font-size:1.25rem;color:var(--text)">Few individuals leave behind a legacy that becomes a part of a city’s soul. Suraj Parmar did. His vision didn’t just shape Thane’s skyline, it gave it heart. Every structure he built, every idea he pursued, carried his belief that development must serve both people and nature. From pioneering initiatives like the Blue Revolution to standing up against red-tapism, he redefined what it meant to build with purpose.</p>
+      <p class="lead" style="margin-inline:auto">House of Cosmos carries that spirit forward. Preserving his values, evolving his vision, and continuing to create spaces that inspire, include, and endure.</p>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.whoWeAre} alt="House of Cosmos sales experience centre" loading="lazy" width="1200" height="1500" /></div>
+      <div>
+        <span class="eyebrow">Crafting</span>
+        <h2>Who We Are</h2>
+        <p>House of Cosmos stands for innovation, design, and sustainable living. Born from the trusted legacy of Suraj Parmar, the founder of Cosmos Group, we redefine residential projects in Thane for a generation that values both purpose and progress. Each project embodies our core belief — to craft spaces that inspire living, nurture community, and endure with time. Rooted in design thinking, powered by technology, and driven by responsibility, we blend luxury with meaning and comfort with consciousness.</p>
+        <p>With innovation as our foundation and legacy as our strength, House of Cosmos, among the best builders in Thane, is shaping tomorrow’s skyline — <strong>Designed for Tomorrow. Rooted in Legacy.</strong></p>
+        <a class="btn btn-line" href="/about-us/" style="color:var(--ink)">Read our story →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Crafting</span><h2>Harnessing the Cosmos into Our Buildings</h2><p class="lead">At House of Cosmos, we draw inspiration from the universe itself, a system where balance, renewal, and purpose coexist seamlessly. Just like the cosmos, our communities are designed to live in harmony, with nature, with technology, and with one another.</p></div>
+      <div class="grid g3" style="margin-top:2.5rem">
+        {pillars.map(([t, d], i) => <div class="pillar"><img src={M.pillars[i]} alt={t} loading="lazy" width="900" height="600" /><div><h3>{t}</h3><p>{d}</p></div></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <h2 class="center" style="margin-bottom:2rem">A legacy built in numbers, defined by trust.</h2>
+      <div class="stats">{stats.map((s) => <div><b>{s.n}</b><span>{s.label}</span></div>)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split" style="align-items:end;margin-bottom:2.2rem">
+        <div><span class="eyebrow">Projects</span><h2>Our Architectural Masterpieces</h2></div>
+        <div style="text-align:right"><a class="btn btn-line" href="/projects/" style="color:var(--ink)">View all projects →</a></div>
+      </div>
+      <div class="grid g3">{homeProjects.map((p) => <ProjectCard p={p} />)}</div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Crafting</span><h2>Why Choose House of Cosmos</h2></div>
+      <div class="grid g3" style="margin-top:2.5rem">
+        {whyUs.map(([t, d]) => <div class="card"><h3>{t}</h3><p style="margin:0;color:var(--muted)">{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Crafting</span><h2>Awards & Recognition</h2><p class="lead">Awards that honour our pursuit of timeless quality.</p></div>
+      <div class="grid g3" style="margin-top:2rem">
+        {awards.map((a, i) => <div class="card award"><img src={M.awards[i]} alt={a.title} loading="lazy" width="300" height="450" /><h3>{a.title}</h3><p style="margin:0;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;font-size:.8rem">{a.label}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-photo">
+    <img src={M.channelBg} alt="" loading="lazy" />
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Channel Partners</span>
+        <h2>Become Our Exclusive Channel Partners Today!</h2>
+        <p class="lead">Partner with House of Cosmos Thane, one of the most trusted green building developers in Thane, and be part of our growing network.</p>
+      </div>
+      <div class="form-box" style="color:var(--text)">
+        <form class="enquiry" name="channel-partner" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="channel-partner" />
+          <p class="hp"><label>Leave empty <input name="bot-field" /></label></p>
+          <label>Name<input name="name" required /></label>
+          <div class="row">
+            <label>Mobile<input name="phone" type="tel" required /></label>
+            <label>Email<input name="email" type="email" /></label>
+          </div>
+          <div class="row">
+            <label>Firm name<input name="firm" /></label>
+            <label>MahaRERA agent no.<input name="rera_agent_no" /></label>
+          </div>
+          <button class="btn btn-gold" type="submit">Apply to partner →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="split" style="align-items:end;margin-bottom:2.2rem">
+        <div><span class="eyebrow">Insights</span><h2>From our blog</h2></div>
+        <div style="text-align:right"><a class="btn btn-line" href="/blogs/" style="color:var(--ink)">All articles →</a></div>
+      </div>
+      <div class="grid g3">
+        {blogs.slice(0, 3).map((b) => (
+          <a class="pcard" href={`/${b.slug}/`}>
+            <div class="photo wide"><img src={b.image} alt={b.title} loading="lazy" width="1600" height="900" /></div>
+            <div class="body"><p style="font-size:.8rem;margin-bottom:.3rem">{fmt(b.date)}</p><h3 style="font-size:1.25rem">{b.title}</h3></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

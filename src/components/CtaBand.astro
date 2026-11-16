@@ -1,0 +1,29 @@
+---
+import EnquiryForm from './EnquiryForm.astro';
+import { contact, trividhRera } from '../data/site.js';
+import M from '../data/media.json';
+const { title = 'Quick Inquiry', text = 'Have a question about Trividh or want to book a site visit? Share your details and we’ll consult you as soon as possible. Our sales office is open every day, 9 AM to 8 PM.' } = Astro.props;
+---
+<section class="section dark" id="enquire">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Get in touch</span>
+      <h2>{title}</h2>
+      <p class="lead">{text}</p>
+      <div class="btn-row">
+        <a class="btn btn-gold" href={contact.phoneHref}>Call {contact.phone}</a>
+        <a class="btn btn-line" href={contact.whatsapp} target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+      <div style="display:flex;gap:1.2rem;align-items:center;margin-top:2rem;flex-wrap:wrap">
+        <img src={M.logoAlt} alt="House of Cosmos" style="height:42px;width:auto" loading="lazy" />
+        <span style="color:#6f8a7e">×</span>
+        <img src={M.greenview} alt="GreenView Realtors & Consultants" style="height:38px;width:auto;background:#fff;padding:4px 8px;border-radius:6px" loading="lazy" />
+      </div>
+      <div class="qr rera" style="margin-top:1.5rem">
+        <img src={M.reraQr} alt={`MahaRERA QR code for Trividh, ${trividhRera}`} loading="lazy" width="96" height="96" />
+        <span>Trividh is registered under MahaRERA No. {trividhRera}, available on <a href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener">maharera.maharashtra.gov.in</a> under registered projects.</span>
+      </div>
+    </div>
+    <div class="form-box"><EnquiryForm /></div>
+  </div>
+</section>

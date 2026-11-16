@@ -1,0 +1,18 @@
+---
+import M from '../data/media.json';
+const { p } = Astro.props;
+const label = { ongoing: 'Ongoing', upcoming: 'Upcoming', completed: 'Completed' }[p.status];
+const img = M.projects[p.name];
+const Tag = p.href ? 'a' : 'div';
+---
+<Tag class="pcard" href={p.href} data-status={p.status}>
+  <div class="photo">
+    <span class="tag">{label}</span>
+    {img ? <img src={img} alt={`${p.name} by Cosmos, Thane`} loading="lazy" width="900" height="1125" /> : <div class="visual" style="height:100%"><span>{p.name}</span></div>}
+  </div>
+  <div class="body">
+    <h3>{p.name}</h3>
+    <p>{p.spec}</p>
+    {p.href && <p style="color:var(--gold);font-weight:600;margin-top:.5rem">View project →</p>}
+  </div>
+</Tag>

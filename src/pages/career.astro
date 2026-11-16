@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { jobs } from '../data/site.js';
+import M from '../data/media.json';
+const why = [
+  ['Shape Extraordinary Spaces', 'Join a team that transforms ideas into iconic developments, creating homes and workplaces where design, innovation, and lifestyle converge.'],
+  ['Be Part of a Living Legacy', 'Work with a brand built on decades of trust and excellence, guided by a new generation redefining what modern, sustainable real estate can be.'],
+  ['Innovate Without Boundaries', 'We empower bold thinking and creativity at every step; your vision and ideas help set new benchmarks in design, sustainability, and luxury living.'],
+  ['Craft Impactful Experiences', 'Every project you touch shapes communities, enriches lives, and leaves an enduring legacy. Here, your work makes a tangible difference for generations to come.'],
+];
+---
+<Base title="Careers at House of Cosmos – Work With Leading Developers in Thane" description="Build your career with House of Cosmos, a top real estate developer in Thane. Explore job openings, growth opportunities and a collaborative culture.">
+  <PageHero title="Build Your Future with Us" crumb="Career" eyebrow="Careers" intro="At House of Cosmos, we don’t just build landmark spaces, we build futures. Rooted in a legacy of trust and driven by innovation, we believe our people are the true foundation of every success we create." />
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">Here, ideas are valued, talent is nurtured, and growth is limitless. Join us, and be part of a new generation shaping the future of sustainable, design-led living, one milestone at a time.</p>
+        <a class="btn btn-gold" href="#openings">See open roles</a>
+      </div>
+      <div class="photo" style="aspect-ratio:3/2"><img src={M.careerHero} alt="Office desk at House of Cosmos" loading="lazy" width="1600" height="1067" /></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Why Work With Us?</span><h2>Do the best work of your career</h2></div>
+      <div class="grid g4" style="margin-top:2.5rem">
+        {why.map(([t, d]) => <div class="card"><h3>{t}</h3><p style="margin:0;color:var(--muted)">{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Life at Cosmos</span><h2>More than a career</h2><p class="lead">Life at House of Cosmos is more than a career, it’s an experience. Here, ambition meets opportunity, creativity meets structure, and collaboration meets inspiration. Every day, our teams engage in projects that challenge norms, push boundaries, and set new standards in design and sustainability.</p></div>
+      <div class="grid g4" style="margin-top:2rem">{M.careerLife.map((src, i) => <div class="photo" style="aspect-ratio:4/5"><img src={src} alt={`Life at House of Cosmos ${i + 1}`} loading="lazy" width="900" height="1125" /></div>)}</div>
+    </div>
+  </section>
+
+  <section class="section cream" id="openings">
+    <div class="container">
+      <span class="eyebrow">Current Openings</span><h2>Open roles</h2>
+      <div class="grid" style="margin-top:1.5rem">
+        {jobs.map((j) => (
+          <details class="card">
+            <summary style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;cursor:pointer;list-style:none">
+              <div><h3 style="margin:0">{j.title}</h3><p style="margin:0;color:var(--muted)">{j.dept} · {j.location} · {j.type}</p></div>
+              <span class="btn btn-line" style="color:var(--ink)">View details</span>
+            </summary>
+            <div class="grid g2" style="margin-top:1.2rem">
+              <div><h4 style="font-size:1.1rem">Responsibilities</h4><ul class="ticks">{j.resp.map((r) => <li>{r}</li>)}</ul></div>
+              <div><h4 style="font-size:1.1rem">Requirements</h4><ul class="ticks">{j.req.map((r) => <li>{r}</li>)}</ul></div>
+            </div>
+            <a class="btn btn-gold" href="#apply" data-role={j.title}>Apply for this role</a>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="container" style="max-width:760px">
+      <div class="form-box">
+        <h2 style="font-size:2rem">Apply to House of Cosmos</h2>
+        <form class="enquiry" name="career" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+          <input type="hidden" name="form-name" value="career" />
+          <p class="hp"><label>Leave empty <input name="bot-field" /></label></p>
+          <label>Role
+            <select name="role" id="roleSel">{jobs.map((j) => <option>{j.title}</option>)}<option>Other / general application</option></select>
+          </label>
+          <label>Full name<input name="name" required /></label>
+          <div class="row">
+            <label>Mobile<input name="phone" type="tel" required /></label>
+            <label>Email<input name="email" type="email" required /></label>
+          </div>
+          <label>Resume (PDF or Word, max 5 MB)<input name="resume" type="file" accept=".pdf,.doc,.docx" /></label>
+          <label>Anything you’d like us to know?<textarea name="message" rows="3"></textarea></label>
+          <button class="btn btn-gold" type="submit">Submit application →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+  <script>
+    document.querySelectorAll('[data-role]').forEach((a) => a.addEventListener('click', () => {
+      (document.getElementById('roleSel') as HTMLSelectElement).value = (a as HTMLElement).dataset.role!;
+    }));
+  </script>
+</Base>

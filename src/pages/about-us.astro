@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { stats } from '../data/site.js';
+import M from '../data/media.json';
+---
+<Base title="About House of Cosmos - Trusted Builders & Developers in Thane" description="Learn about House of Cosmos, a leading real estate developer in Thane known for premium residential projects, quality construction, and sustainable development.">
+  <PageHero title="About Us" eyebrow="Our Story" intro="Designed for Tomorrow. Rooted in Legacy." />
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <img src={M.signature} alt="A Suraj Parmar Legacy" style="max-width:340px;height:auto;margin-bottom:1.5rem" loading="lazy" />
+        <p style="font-size:1.12rem">Some people build landmarks, but a select few build legacies that live long after them and Late Mr. Suraj Parmar was undeniably one of them. He didn’t just help shape Thane, he gave it an identity grounded in ambition, integrity, and compassion. His belief that development must uplift people, protect nature, and challenge the ordinary, transformed blueprints into movements and buildings into belonging.</p>
+        <p>House of Cosmos doesn’t just continue his work, it carries his spirit forward with purpose. Evolving his vision, honouring his values, and creating communities that feel timeless, intentional, and deeply human not just for today, but for every generation that will rise after.</p>
+      </div>
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.founder} alt="Portrait of Late Mr. Suraj Ramesh Parmar" loading="lazy" width="900" height="1125" /></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:1/1"><img src={M.aboutLegacy} alt="Thane skyline with the House of Cosmos sun mark" loading="lazy" width="1200" height="1200" /></div>
+      <div>
+        <span class="eyebrow">About Us</span>
+        <h2>The Cosmos legacy, since 2000</h2>
+        <p>Founded in 2000 by the visionary Late Suraj Ramesh Parmar, the Cosmos legacy has become synonymous with trust, integrity, and excellence in real estate. Over the last 24+ years, the brand has shaped skylines, delivered over 60,000 homes, and earned the confidence of countless families who call a Cosmos creation their own.</p>
+        <p>House of Cosmos marks the next chapter of this journey, led by a dynamic new generation with a contemporary vision. With a focus on thoughtful design, sustainable practices, and global sensibilities, we craft spaces that go beyond living, spaces that inspire a way of life.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid g3">
+        <div class="card"><h3>Our Vision</h3><p style="margin:0;color:var(--muted)">To lead a revolution of environmentally and socially sustainable, innovative real estate developments and concepts that improve the physical and mental well-being of all stakeholders by implementing thoughtful design, cutting-edge innovation technology, and ethically sustainable practices.</p></div>
+        <div class="card"><h3>Our Mission</h3><p style="margin:0;color:var(--muted)">Our mission is to become a trusted customer-centric partner to create quality, affordable, and sustainable places to live/work, achieved through thoughtful design, transparent delivery, and integrity at every step.</p></div>
+        <div class="card"><h3>Our Values</h3><p style="margin:0;color:var(--muted)">At House of Cosmos, we act with integrity and a long-term perspective, creating spaces that leave a lasting impact. We champion sustainability and innovation, designing solutions that care for both people and the planet. Guided by empathy and social responsibility, our work enriches communities and lives. With design thinking at the heart of everything we do, we combine creativity with purpose to shape a meaningful future.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <h2 class="center" style="margin-bottom:2rem">A legacy built in numbers, defined by trust.</h2>
+      <div class="stats">{stats.map((s) => <div><b>{s.n}</b><span>{s.label}</span></div>)}</div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container" style="max-width:900px">
+      <div class="center"><span class="eyebrow">Leadership</span><h2>From the Desk of Our Founders</h2></div>
+      <div class="grid g2" style="margin-top:2.5rem">
+        <div class="director"><img src={M.directors[0]} alt="Abhishek Parmar, Director" loading="lazy" width="800" height="880" /><div><h3 style="color:#fff;margin:0">Abhishek Parmar</h3><p class="eyebrow" style="margin:.2rem 0 .8rem">Director</p><p style="margin:0;color:#c3d1ca">Since 2015, Abhishek Parmar has been at the forefront of a new generation of developers, bringing fresh ideas and forward-thinking approaches to the renowned legacy of the House of Cosmos. His 100% streak in project completion has made him an expert in tackling diverse challenges in the realm of development.</p></div></div>
+        <div class="director"><img src={M.directors[1]} alt="Akshit Parmar, Projects Director" loading="lazy" width="800" height="880" /><div><h3 style="color:#fff;margin:0">Akshit Parmar</h3><p class="eyebrow" style="margin:.2rem 0 .8rem">Projects Director</p><p style="margin:0;color:#c3d1ca">Akshit Parmar leads new projects at the House of Cosmos with the insights of an architect, precision of a manager and the vision of an artist. A Master’s graduate in Design and Construction from the Netherlands, he also works with Big Picture, an innovation-driven development firm based in The Hague.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand title="Visit us in Thane" />
+</Base>

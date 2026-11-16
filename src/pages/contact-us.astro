@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+import { contact } from '../data/site.js';
+---
+<Base title="Contact House of Cosmos | Thane Real Estate Developer" description="Get in touch with House of Cosmos for inquiries about new projects, residential properties, and investment opportunities in Thane’s prime locations.">
+  <PageHero title="Contact Us" eyebrow="Get in touch with us" intro="Tell us a little about what you’re looking for, and we’ll reach out with the right guidance. Your journey towards evolved living begins here." />
+  <section class="section">
+    <div class="container split" style="align-items:start">
+      <div class="grid">
+        <div class="card"><span class="eyebrow">Visit Us</span><p style="margin:0">{contact.address}</p><a class="btn btn-line" style="color:var(--ink);margin-top:1rem" href={contact.map} target="_blank" rel="noopener">Open in Google Maps →</a></div>
+        <div class="card"><span class="eyebrow">Call Us</span><h3><a href={contact.phoneHref} style="text-decoration:none">{contact.phone}</a></h3><a href={contact.whatsapp} target="_blank" rel="noopener" style="color:#1f9d55;font-weight:600">Chat on WhatsApp →</a></div>
+        <div class="card"><span class="eyebrow">Write to Us</span><h3><a href={`mailto:${contact.email}`} style="text-decoration:none">{contact.email}</a></h3></div>
+        <div class="card"><span class="eyebrow">Office Time</span><p style="margin:0"><strong>Head Office:</strong> {contact.hours}<br /><strong>Sales Office:</strong> {contact.hours}</p></div>
+      </div>
+      <div class="form-box"><EnquiryForm title="Quick Enquiry" project="General" /></div>
+    </div>
+  </section>
+</Base>

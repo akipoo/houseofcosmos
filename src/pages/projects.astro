@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { projects } from '../data/site.js';
+---
+<Base title="Residential Projects in Thane | House of Cosmos" description="Explore premium residential projects in Thane by House of Cosmos, including new launches, sustainable living spaces, and upcoming developments.">
+  <PageHero title="Projects" eyebrow="Our Portfolio" intro="From our IGBC Platinum-certified flagship Trividh to landmarks delivered across Thane by the Cosmos legacy." />
+  <section class="section">
+    <div class="container">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-filter="all">All</button>
+        <button role="tab" aria-selected="false" data-filter="ongoing">Ongoing</button>
+        <button role="tab" aria-selected="false" data-filter="upcoming">Upcoming</button>
+        <button role="tab" aria-selected="false" data-filter="completed">Completed</button>
+      </div>
+      <div class="grid g3" id="plist">{projects.map((p) => <ProjectCard p={p} />)}</div>
+    </div>
+  </section>
+  <CtaBand />
+  <script>
+    const tabs = document.querySelectorAll('[data-filter]');
+    tabs.forEach((t) => t.addEventListener('click', () => {
+      const f = (t as HTMLElement).dataset.filter;
+      tabs.forEach((x) => x.setAttribute('aria-selected', String(x === t)));
+      document.querySelectorAll('#plist [data-status]').forEach((c) => {
+        (c as HTMLElement).style.display = f === 'all' || (c as HTMLElement).dataset.status === f ? '' : 'none';
+      });
+    }));
+  </script>
+</Base>

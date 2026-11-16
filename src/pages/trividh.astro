@@ -1,0 +1,85 @@
+---
+import Base from '../layouts/Base.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import Gallery from '../components/Gallery.astro';
+import Lightbox from '../components/Lightbox.astro';
+import { trividhRera } from '../data/site.js';
+import M from '../data/media.json';
+const planNames = ['Overall Plan', 'Zone 01', 'Zone 02', 'Zone 03', 'Zone 04', 'Zone 05'];
+const schema = {
+  '@context': 'https://schema.org', '@type': 'ApartmentComplex', name: 'Trividh by House of Cosmos',
+  description: 'IGBC Platinum-certified residential tower with 2 BHK, 3 BHK and custom Jodi homes in Naupada, Thane West.',
+  address: { '@type': 'PostalAddress', addressLocality: 'Naupada, Thane West', addressRegion: 'Maharashtra', addressCountry: 'IN' },
+  image: new URL(M.trividhCard, 'https://houseofcosmos.co').href,
+  url: 'https://houseofcosmos.co/trividh/',
+};
+---
+<Base title="Trividh by House of Cosmos – Premium Residential Project in Thane" description="Explore Trividh by House of Cosmos, a premium IGBC Platinum-certified residential project in Naupada, Thane offering 2 & 3 BHK homes, modern amenities and excellent connectivity." ogImage={M.trividhCard} schema={schema}>
+  <section class="hero" style="min-height:82vh">
+    <img class="bg" src={M.trividhHero} alt="Trividh tower at dusk in Naupada, Thane" fetchpriority="high" />
+    <div class="container">
+      <div class="crumbs" style="color:#c3d1ca"><a href="/">Home</a> / Trividh</div>
+      <span class="eyebrow">Naupada, Thane West · IGBC Platinum</span>
+      <h1>Trividh</h1>
+      <p>Trividh by House of Cosmos & GreenView Realtors gives you a home where luxury meets thoughtful living. Located in Naupada, the heart of Thane, this IGBC Platinum–certified residence offers 2 & 3 BHK homes designed to welcome natural light, enhance ventilation, and provide a secure, serene environment.</p>
+      <div class="btn-row">
+        <button class="btn btn-gold" data-enquire>Book a Site Visit</button>
+        <a class="btn btn-line" href="#floor-plans" style="color:#fff">View floor plans</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px;text-align:center">
+      <p class="lead" style="margin-inline:auto;font-size:1.2rem;color:var(--text)">Built with sustainable practices and premium finishes, Trividh gives you a lifestyle that blends elegance, comfort, and modern sophistication effortlessly.</p>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['overview', 'amenities']} />
+
+  <section class="section cream" id="gallery">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Project Gallery</span><h2>Experience Trividh Before You Call It Home</h2></div>
+      <div class="tabs" role="tablist" style="justify-content:center;margin-top:1.5rem">
+        <button role="tab" aria-selected="true" data-g="ext">External Views</button>
+        <button role="tab" aria-selected="false" data-g="int">Internal Views</button>
+      </div>
+      <div data-gpanel="ext"><Gallery images={M.external} alt="Trividh external view" /></div>
+      <div data-gpanel="int" hidden><Gallery images={M.internal} alt="Trividh internal view" /></div>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:1rem;text-align:center">Images are artist’s impressions.</p>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['location']} />
+
+  <section class="section cream" id="floor-plans">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Floor Plans</span><h2>Layouts Designed Around the Way You Live</h2><p class="lead">Tap a plan to enlarge it. For detailed unit plans and the price sheet, request a call back.</p></div>
+      <div class="gallery plans" data-gallery style="margin-top:2rem">
+        {M.floorPlans.map((src, i) => <a href={src} data-lb title={`Trividh ${planNames[i]}`}><img src={src} alt={`Trividh ${planNames[i]}`} loading="lazy" width="1800" height="1270" /></a>)}
+      </div>
+      <div class="center" style="margin-top:2rem"><button class="btn btn-gold" data-enquire>Get detailed plans & prices</button></div>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['green']} />
+
+  <Faq items={[
+    ['Where is Trividh located?', 'Trividh is located in Naupada, Thane West, one of the most well-connected areas in Thane.'],
+    ['Does Trividh offer 2 BHK and 3 BHK flats?', 'Yes, Trividh offers both 2 BHK and 3 BHK flats with flexible layout options, including custom Jodi flats.'],
+    ['Is Trividh RERA registered?', `Yes. Trividh is registered under MahaRERA No. ${trividhRera}, available on the MahaRERA website under registered projects.`],
+    ['Does Trividh have eco-friendly features?', 'Yes, Trividh is an IGBC Platinum-Certified Project that includes solar energy, rainwater harvesting, and efficient water recycling systems.'],
+    ['What are the nearby transport options?', 'The project is close to Thane Railway Station, Eastern Express Highway, and the proposed Nitin Company Metro Station.'],
+  ]} />
+  <CtaBand />
+  <Lightbox />
+  <script>
+    document.querySelectorAll('[data-g]').forEach((b) => b.addEventListener('click', () => {
+      const k = (b as HTMLElement).dataset.g;
+      document.querySelectorAll('[data-g]').forEach((x) => x.setAttribute('aria-selected', String(x === b)));
+      document.querySelectorAll('[data-gpanel]').forEach((p) => ((p as HTMLElement).hidden = (p as HTMLElement).dataset.gpanel !== k));
+    }));
+  </script>
+</Base>

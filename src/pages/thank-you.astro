@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { contact } from '../data/site.js';
+---
+<Base title="Thank you | House of Cosmos" description="Thank you for contacting House of Cosmos." noindex>
+  <section class="page-hero" style="min-height:60vh;display:grid;align-items:center">
+    <div class="container center">
+      <span class="eyebrow">Received</span>
+      <h1 style="margin-inline:auto">Thank you — we’ll be in touch shortly.</h1>
+      <p style="margin-inline:auto">Our team usually calls back within a few working hours. Need us sooner?</p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn btn-gold" href={contact.phoneHref}>Call {contact.phone}</a>
+        <a class="btn btn-line" style="color:#fff" href={contact.whatsapp} target="_blank" rel="noopener">WhatsApp us</a>
+      </div>
+    </div>
+  </section>
+</Base>

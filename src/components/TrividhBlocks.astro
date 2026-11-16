@@ -1,0 +1,62 @@
+---
+import { trividhAmenities, trividhNearby, trividhRera } from '../data/site.js';
+import M from '../data/media.json';
+const { show = ['overview', 'green', 'amenities', 'location'] } = Astro.props;
+---
+{show.includes('overview') && (
+<section class="section">
+  <div class="container split">
+    <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTower} alt="Trividh tower, Naupada, Thane West" loading="lazy" width="1200" height="1500" /></div>
+    <div>
+      <span class="eyebrow">Project Overview</span>
+      <h2>Trividh at a glance</h2>
+      <table class="table">
+        <tr><td>Location</td><td>Naupada, Thane West</td></tr>
+        <tr><td>Configuration</td><td>2 BHK, 3 BHK & Custom Jodi Flats</td></tr>
+        <tr><td>Structure</td><td>3 Podiums + 29 Residential Floors</td></tr>
+        <tr><td>Podium amenities</td><td>10,000+ sq. ft.</td></tr>
+        <tr><td>Certification</td><td>IGBC Platinum</td></tr>
+        <tr><td>Prices starting from</td><td>₹2.10 Cr*</td></tr>
+        <tr><td>MahaRERA No.</td><td>{trividhRera}</td></tr>
+      </table>
+      <div class="btn-row"><button class="btn btn-gold" data-enquire>Get price & floor plans</button></div>
+      <p style="font-size:.8rem;color:var(--muted);margin-top:1rem">*Prices are indicative and subject to change. Taxes and charges extra.</p>
+    </div>
+  </div>
+</section>
+)}
+{show.includes('green') && (
+<section class="section bg-photo">
+  <img src={M.ecoBg} alt="" loading="lazy" />
+  <div class="container">
+    <div class="center"><span class="eyebrow">The Trividh Advantage</span><h2>Sustainable Value, Built In</h2><p class="lead" style="margin-inline:auto">Trividh goes beyond luxury, it's a benchmark for sustainability in Thane’s real estate market. As an IGBC-certified green residential project, every detail is designed to enhance your comfort while minimizing environmental impact.</p></div>
+    <div class="grid g4" style="margin-top:2.5rem">
+      <div class="card" style="background:rgba(5,34,24,.7);border-color:#1d4d3c;color:#d3ded8"><h3>Reduce Water Bills</h3><p style="margin:0">An advanced grey water recycling and rainwater harvesting system, rare among new construction in Thane, helps you conserve water and lower utility expenses over time.</p></div>
+      <div class="card" style="background:rgba(5,34,24,.7);border-color:#1d4d3c;color:#d3ded8"><h3>Maximize Energy Savings</h3><p style="margin:0">Solar power for common areas, intelligent façade design, and wide windows allow natural light and cross-ventilation, keeping electricity and maintenance costs lower.</p></div>
+      <div class="card" style="background:rgba(5,34,24,.7);border-color:#1d4d3c;color:#d3ded8"><h3>Breathe Easier</h3><p style="margin:0">With low-VOC paints and eco-friendly materials, every home promotes superior indoor air quality and healthier living.</p></div>
+      <div class="card" style="background:rgba(5,34,24,.7);border-color:#1d4d3c;color:#d3ded8"><h3>Future-Proof Investment</h3><p style="margin:0">Being part of a certified sustainable project in Thane ensures higher long-term value and strong resale potential.</p></div>
+    </div>
+  </div>
+</section>
+)}
+{show.includes('amenities') && (
+<section class="section dark">
+  <div class="container">
+    <div class="center"><span class="eyebrow">Amenities</span><h2>Amenities For Everyday Ease</h2><p class="lead" style="margin-inline:auto">Premium amenities across a 10,000+ sq. ft. podium — active living, social spaces, and smart, secure homes.</p></div>
+    <ul class="pills" style="justify-content:center;margin-top:2rem">{trividhAmenities.map((a) => <li>{a}</li>)}</ul>
+  </div>
+</section>
+)}
+{show.includes('location') && (
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Location Advantage</span>
+      <h2>Perfectly Placed in the Heart of Thane</h2>
+      <p>Located in Naupada, Trividh places you right in the center of Thane’s most established neighborhoods. It is only 7 minutes from Thane Railway Station and the Eastern Express Highway, with the proposed Nitin Company Metro Station just 1.5 km away. Viviana Mall, Jupiter Hospital, Talao Pali, and some of the city’s top schools are all within a 5–7 minute drive.</p>
+      <a class="btn btn-line" style="color:var(--ink)" href="https://www.google.com/maps/search/?api=1&query=Trividh+House+of+Cosmos+Naupada+Thane" target="_blank" rel="noopener">Get directions →</a>
+    </div>
+    <table class="table">{trividhNearby.map(([n, d]) => <tr><td>{n}</td><td>{d}</td></tr>)}</table>
+  </div>
+</section>
+)}

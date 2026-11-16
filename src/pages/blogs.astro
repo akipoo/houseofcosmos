@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { blogs } from '../data/site.js';
+const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+<Base title="Real Estate Blogs – Trends, New Projects & Investment Guides Thane" description="Read expert blogs on real estate trends, new projects in Thane, buying guides, home investment tips, sustainability insights, and property market updates.">
+  <PageHero title="Blogs" eyebrow="Insights" intro="Buying guides, investment insights and sustainability thinking for homebuyers in Thane." />
+  <section class="section">
+    <div class="container grid g3">
+      {blogs.map((b) => (
+        <a class="pcard" href={`/${b.slug}/`}>
+          <div class="photo wide"><img src={b.image} alt={b.title} loading="lazy" width="1600" height="900" /></div>
+          <div class="body"><p style="font-size:.8rem;margin-bottom:.3rem">{fmt(b.date)}</p><h3 style="font-size:1.3rem">{b.title}</h3><p>{b.description}</p><p style="color:var(--gold);font-weight:600;margin-top:.6rem">Read article →</p></div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>

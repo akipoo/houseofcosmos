@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import { trividhRera } from '../data/site.js';
+import M from '../data/media.json';
+---
+<Base title="Premium Flats for Sale in Naupada Thane | Premium Residential Projects Thane" description="Explore premium flats for sale in Naupada Thane, including new project launches and top residential developments in a prime central location.">
+  <PageHero title="Premium Flats in Naupada" eyebrow="Naupada, Thane West" intro="Looking to buy a home in Naupada, Thane? House of Cosmos offers modern, eco-conscious living spaces in the heart of Naupada, Thane West — designed for comfort, sustainability, and convenience.">
+    <div class="btn-row"><button class="btn btn-gold" data-enquire>Book a Site Visit</button></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">If you are searching for flats for sale in Thane West, Trividh stands out for its thoughtful design and green certification. Each home welcomes natural light, promotes ventilation, and reduces energy use while maintaining the warmth of modern living.</p>
+        <h2 style="margin-top:1.5rem">2 and 3 BHK Flats for Sale in Naupada, Thane West</h2>
+        <p>Trividh offers 2 & 3 BHK flats in Naupada, Thane for people who value both comfort and design. Each apartment features a smart layout, natural air flow, and premium finishes.</p>
+        <p>Whether you are buying your first home or upgrading to a larger one, Trividh offers the perfect mix of location, quality, and thoughtful architecture.</p>
+      </div>
+      <div class="photo" style="aspect-ratio:4/3"><img src={M.trividhNight} alt="Trividh, premium flats in Naupada, Thane West" loading="lazy" width="1600" height="1200" /></div>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['overview']} />
+
+  <section class="section dark">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Amenities</span><h2>Amenities that support healthy and balanced living</h2></div>
+      <ul class="pills" style="justify-content:center;margin-top:2rem">{['Gym & wellness centre', 'Children’s play area', 'Multipurpose sports turf', 'Elegant banquet hall', 'EV charging stations', 'Podium-level parking', 'Smart locks & CCTV security', 'Power backup for essential services'].map((a) => <li>{a}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Location Benefits</span>
+        <h2>Close to everything that matters</h2>
+        <ul class="ticks">
+          <li><strong>Connectivity:</strong> 7 minutes from Thane Railway Station and Eastern Express Highway.</li>
+          <li><strong>Metro Access:</strong> Near the proposed Nitin Company Metro Station.</li>
+          <li><strong>Education & Healthcare:</strong> Close to top schools, colleges, and Jupiter Hospital.</li>
+          <li><strong>Shopping & Leisure:</strong> Korum Mall and Talao Pali are just a few minutes away.</li>
+        </ul>
+        <p>This prime location makes Trividh one of the most convenient apartments for sale in Naupada, Thane West.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Why Choose Trividh</span>
+        <h2>Lasting value and peace of mind</h2>
+        <ul class="ticks"><li>Homes designed with sustainability and comfort in mind</li><li>Central location with excellent connectivity</li><li>Future-ready amenities for modern urban life</li><li>Developed by House of Cosmos, known for trust and quality</li></ul>
+        <p>If you are planning to buy flats in Naupada, Thane West, Trividh offers lasting value, comfort, and peace of mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container">
+      <div class="center"><span class="eyebrow">Available Configurations</span><h2>Find the right home</h2></div>
+      <div class="grid g2" style="margin-top:2rem">
+        <div class="card"><h3>2 BHK Flat for Sale in Naupada, Thane</h3><p style="margin:0;color:var(--muted)">Ideal for small families and working professionals.</p></div>
+        <div class="card"><h3>3 BHK Flats in Naupada, Thane</h3><p style="margin:0;color:var(--muted)">Spacious homes offering privacy and better comfort.</p></div>
+      </div>
+      <p class="center" style="margin-top:1.5rem">Explore the floor plans or book a site visit to know more about Trividh.</p>
+      <div class="center"><a class="btn btn-gold" href="/trividh/#floor-plans">View floor plans</a></div>
+    </div>
+  </section>
+
+  <Faq title="Frequently Asked Questions (FAQ)" items={[
+    ['Where is Trividh located?', 'Trividh is located in Naupada, Thane West, one of the most well-connected areas in Thane.'],
+    ['Does Trividh offer 2 BHK and 3 BHK flats?', 'Yes, Trividh offers both 2 BHK and 3 BHK flats in Naupada, Thane with flexible layout options.'],
+    ['Is Trividh an under-construction project?', `Yes. Trividh is under construction and registered under MahaRERA No. ${trividhRera}.`],
+    ['Who is the developer of Trividh?', 'Trividh is developed by House of Cosmos, a trusted name in real estate known for sustainable and high-quality projects.'],
+    ['What are the nearby transport options?', 'The project is close to Thane Railway Station, Eastern Express Highway, and the proposed Nitin Company Metro Station.'],
+    ['Does Trividh have eco-friendly features?', 'Yes, Trividh is an IGBC Platinum-Certified Project that includes solar energy, rainwater harvesting, and efficient water recycling systems.'],
+  ]} />
+  <CtaBand title="Book Your Home at Trividh" text="Discover the floor plans, explore the amenities, and experience how Trividh brings sustainable and modern living together in Thane West." />
+</Base>

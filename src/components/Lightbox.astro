@@ -1,0 +1,35 @@
+---
+---
+<dialog class="lightbox" id="lightbox">
+  <button class="lb-close" aria-label="Close">×</button>
+  <button class="lb-prev" aria-label="Previous">‹</button>
+  <img alt="" />
+  <button class="lb-next" aria-label="Next">›</button>
+</dialog>
+<style is:global>
+  dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: 96vw; max-height: 94vh; }
+  dialog.lightbox::backdrop { background: rgba(5,34,24,.92); }
+  dialog.lightbox img { max-width: 92vw; max-height: 86vh; object-fit: contain; border-radius: 8px; display: block; margin: auto; }
+  dialog.lightbox button { position: fixed; background: rgba(255,255,255,.12); color: #fff; border: 0; font-size: 2rem; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; }
+  .lb-close { top: 16px; right: 16px; } .lb-prev { left: 12px; top: 50%; } .lb-next { right: 12px; top: 50%; }
+</style>
+<script>
+  const lb = document.getElementById('lightbox') as HTMLDialogElement | null;
+  if (lb && !lb.dataset.ready) {
+    lb.dataset.ready = '1';
+    const img = lb.querySelector('img')!;
+    let list: string[] = [], idx = 0;
+    const show = () => { img.src = list[idx]; };
+    document.querySelectorAll('[data-gallery]').forEach((g) => {
+      const links = [...g.querySelectorAll('a[data-lb]')] as HTMLAnchorElement[];
+      links.forEach((a, i) => a.addEventListener('click', (e) => {
+        e.preventDefault(); list = links.map((l) => l.href); idx = i; show(); lb.showModal();
+      }));
+    });
+    lb.querySelector('.lb-close')!.addEventListener('click', () => lb.close());
+    lb.querySelector('.lb-prev')!.addEventListener('click', () => { idx = (idx - 1 + list.length) % list.length; show(); });
+    lb.querySelector('.lb-next')!.addEventListener('click', () => { idx = (idx + 1) % list.length; show(); });
+    lb.addEventListener('click', (e) => { if (e.target === lb) lb.close(); });
+    document.addEventListener('keydown', (e) => { if (!lb.open) return; if (e.key === 'ArrowLeft') (lb.querySelector('.lb-prev') as HTMLElement).click(); if (e.key === 'ArrowRight') (lb.querySelector('.lb-next') as HTMLElement).click(); });
+  }
+</script>

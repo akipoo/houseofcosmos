@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import M from '../data/media.json';
+---
+<Base title="Green Building Developers in Thane - Sustainable Projects" description="Explore sustainable projects in Thane by House of Cosmos — eco-friendly homes built with green design, energy efficiency and responsible construction.">
+  <PageHero title="House of Cosmos – Leading Green Building Developers in Thane" crumb="Green Projects in Thane" eyebrow="Green Projects in Thane" intro="Trividh – an IGBC Platinum-certified green building project in Thane. A landmark project by House of Cosmos.">
+    <div class="btn-row"><button class="btn btn-gold" data-enquire>Book a Site Visit</button></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">If you’re exploring sustainable projects in Thane, there’s no better example than Trividh. Choosing an eco-friendly home in Thane is not just a lifestyle choice, it’s a smarter financial and environmental decision. It means lower utility bills, improved air quality, and a long-term investment that appreciates in value.</p>
+        <p>House of Cosmos, one of the leading green building developers in Thane, proudly presents Trividh, an IGBC Platinum-certified residential masterpiece in Naupada, designed for modern, conscious living.</p>
+        <a class="btn btn-gold" href="/trividh/">Explore Trividh →</a>
+      </div>
+      <div class="photo" style="aspect-ratio:4/3"><img src={M.trividhNight} alt="Trividh by night, Naupada, Thane" loading="lazy" width="1600" height="1200" /></div>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['green']} />
+
+  <section class="section">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTop} alt="Top view of the Trividh tower" loading="lazy" width="1200" height="1500" /></div>
+      <div>
+        <span class="eyebrow">Project Highlights</span>
+        <h2>Design Meets Purpose</h2>
+        <p>Rising as an architectural landmark, Trividh is a 3P + 29-storey tower offering premium 2 BHK, 3 BHK, and customizable Jodi flats in the heart of Naupada, Thane West.</p>
+        <h3 style="margin-top:1.5rem">Premium Amenities Across a 10,000+ sq. ft. Podium</h3>
+        <ul class="ticks">
+          <li><strong>Active Living:</strong> Fully equipped gymnasium, multi-sport turf, and open-to-sky children’s play area.</li>
+          <li><strong>Social Spaces:</strong> Elegant banquet hall with an outdoor dining zone, ideal for private gatherings and celebrations.</li>
+          <li><strong>Smart & Secure Living:</strong> 24/7 CCTV surveillance and high-speed elevators for a modern, connected lifestyle.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['location']} />
+
+  <section class="section cream">
+    <div class="container center">
+      <span class="eyebrow">Available Configurations</span>
+      <h2>Ready to Invest in an Eco-Conscious Home?</h2>
+      <p class="lead">Explore thoughtfully designed 2 & 3 BHK eco-conscious residences in Naupada, Thane and see why House of Cosmos is recognized among the best green building developers in Thane.</p>
+      <ul class="pills" style="justify-content:center;margin-top:1.5rem"><li>2 BHK – Zone 1</li><li>3 BHK – Zone 1</li><li>Custom Jodi Options</li></ul>
+      <p style="margin-top:1.5rem"><em>Secure your future with Trividh, a home built to last, and built to care.</em></p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

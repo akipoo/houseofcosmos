@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { trividhRera } from '../data/site.js';
+import M from '../data/media.json';
+const highlights = [
+  '2 & 3 BHK residences built for sustainable living — thoughtfully planned homes that balance comfort and responsibility.',
+  'Located in central Naupada, close to metro stations, schools, hospitals, and daily conveniences.',
+  'Energy-efficient design featuring solar power, rainwater harvesting, and natural cooling systems.',
+  'Smart home features and 24x7 security — modern technology for safer, easier living.',
+  'Podium-level parking, EV charging, and full power backup built for today’s urban needs.',
+  'Open architecture with natural light and ventilation — homes that feel bright, airy, and peaceful.',
+];
+const landmarks = [['Shahu Market Bus Stop', '76 m'], ['Hari Niwas Bus Stop', '130 m'], ['Thane Railway Station', '1.5 km'], ['Proposed Nitin Company Metro', '1.5 km'], ['Kapurbawdi Metro', '3.8 km'], ['Mulund Station', '3.9 km']];
+---
+<Base title="New Projects in Thane - Latest Launches by House of Cosmos" description="Discover new projects in Thane, including upcoming launches and premium residences by House of Cosmos in top locations with modern amenities.">
+  <PageHero title="New Projects in Thane: Explore the Latest Residential Developments" crumb="New Projects in Thane" eyebrow="New Launches" intro="Thane is quickly becoming one of the most promising destinations for homebuyers in the Mumbai region. With rapid infrastructure growth, better connectivity, and urban planning, it has transformed into a hub for new projects in Thane that offer both lifestyle and long-term value.">
+    <div class="btn-row"><button class="btn btn-gold" data-enquire>Book a Site Visit</button></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">At House of Cosmos, we bring you a curated look at the best upcoming residential projects in Thane, designed for modern comfort and future-ready living. Whether you’re looking for spacious apartments, eco-conscious developments, or smart urban homes, you’ll find them all here.</p>
+        <span class="eyebrow" style="margin-top:1rem">New Launch</span>
+        <h2>Trividh: A New Launch in Thane that Redefines Living</h2>
+        <p>Among all the recently launched projects in Thane, Trividh in Naupada stands out as an innovative example of sustainable luxury.</p>
+        <p>It’s an IGBC Platinum-certified residential project that brings together eco-conscious design, thoughtful architecture, and modern comfort. Every home at Trividh is planned to let in more sunlight, allow better air flow, and reduce energy use through smart systems and sustainable materials. The result is a space that feels open, calm, and efficient — a home that works with nature, not against it.</p>
+        <a class="btn btn-gold" href="/trividh/">Explore Trividh →</a>
+      </div>
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTower} alt="Trividh, a new launch in Naupada, Thane" loading="lazy" width="1200" height="1500" /></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:1/1"><img src={M.trividhConfig} alt="Aerial view of Trividh in Naupada" loading="lazy" width="1200" height="1200" /></div>
+      <div>
+        <span class="eyebrow">Configuration</span>
+        <h2>2 & 3 BHK eco-conscious residences in Naupada, Thane</h2>
+        <p style="font-family:var(--serif);font-size:1.8rem;color:var(--gold);margin:.2rem 0 1rem">Prices starting from ₹2.10 Cr*</p>
+        <p>If you’re searching for 2 BHK or 3 BHK newly launched flats in Thane, Trividh offers well-planned layouts that maximize space, privacy, and natural light, ideal for both families and professionals.</p>
+        <h3 style="margin-top:1.5rem">Key Highlights of Trividh</h3>
+        <ul class="ticks">{highlights.map((h) => <li>{h}</li>)}</ul>
+        <p><em>Trividh is more than just a residential project in Thane, it's a vision of responsible luxury.</em></p>
+      </div>
+    </div>
+  </section>
+
+  <TrividhBlocks show={['amenities']} />
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Location</span>
+        <h2>A Connected Lifestyle at the Heart of the City</h2>
+        <p>Trividh is located in Naupada, one of the most central and connected areas in Thane. The project gives residents access to everything including transport, schools, shopping, healthcare, and entertainment within a short distance.</p>
+        <p>Living here means being connected to the best of Thane while still enjoying peace and privacy.</p>
+      </div>
+      <div><h3>Nearby Landmarks</h3><table class="table">{landmarks.map(([n, d]) => <tr><td>{n}</td><td>{d}</td></tr>)}</table></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container" style="max-width:860px">
+      <span class="eyebrow">Thane & Mumbai</span>
+      <h2>Upcoming Residential Projects in Thane & Mumbai</h2>
+      <p>Thane and Mumbai together form a fast-growing residential belt with numerous upcoming launches. Areas like Kolshet, Manpada, Kasarvadavali, and Balkum are seeing recently launched projects in Thane that focus on community living, modern design, and environmental awareness.</p>
+      <p>Homebuyers are investing in projects with open spaces, sky amenities, and wellness zones, a shift from conventional apartments to thoughtful homes built around how people truly live.</p>
+      <p>If you’re looking for the best upcoming residential projects in Thane or the most promising upcoming residential projects in Thane & Mumbai, now is the ideal time to explore before prices appreciate post-launch.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Book a Site Visit" text={`Trividh is registered under MahaRERA No. ${trividhRera}. If you want to experience one of the most sustainable residential projects in Thane, book a visit today.`} />
+</Base>

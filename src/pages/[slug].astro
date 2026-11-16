@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { blogs } from '../data/site.js';
+export function getStaticPaths() {
+  return blogs.map((b) => ({ params: { slug: b.slug }, props: { post: b } }));
+}
+const { post } = Astro.props;
+const others = blogs.filter((b) => b.slug !== post.slug).slice(0, 3);
+const fmt = (d) => new Date(d).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+const url = new URL(`/${post.slug}/`, Astro.site).href;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'BlogPosting', headline: post.title, description: post.description,
+  datePublished: post.date, image: post.image ? new URL(post.image, Astro.site).href : undefined,
+  author: { '@type': 'Organization', name: 'House of Cosmos' }, publisher: { '@type': 'Organization', name: 'House of Cosmos' }, mainEntityOfPage: url,
+};
+const minutes = Math.max(2, Math.round(post.words / 220));
+---
+<Base title={post.seoTitle.includes('House of Cosmos') ? post.seoTitle : `${post.seoTitle} | House of Cosmos`} description={post.description} ogImage={post.image} schema={schema}>
+  <section class="page-hero">
+    <div class="container" style="max-width:900px">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/blogs/">Blogs</a></div>
+      <h1 style="font-size:clamp(2rem,4.2vw,3.2rem)">{post.title}</h1>
+      <p class="post-meta">By House of Cosmos · {fmt(post.date)} · {minutes} min read</p>
+    </div>
+  </section>
+  <section class="section" style="padding-top:2.5rem">
+    <div class="container">
+      {post.image && <div class="post-cover"><img src={post.image} alt={post.title} width={post.imageSize?.[0]} height={post.imageSize?.[1]} fetchpriority="high" /></div>}
+      <article class="prose" set:html={post.html} />
+      <div class="prose" style="margin-top:2.5rem">
+        <div class="card" style="background:var(--cream)">
+          <h3 style="margin-top:0">Looking for a home in central Thane?</h3>
+          <p style="margin-bottom:1rem">Trividh by House of Cosmos offers IGBC Platinum-certified 2 & 3 BHK homes in Naupada, Thane West.</p>
+          <a class="btn btn-gold" href="/trividh/">Explore Trividh →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section cream">
+    <div class="container">
+      <h2>More from the blog</h2>
+      <div class="grid g3" style="margin-top:1.5rem">
+        {others.map((b) => (
+          <a class="pcard" href={`/${b.slug}/`}>
+            <div class="photo wide"><img src={b.image} alt={b.title} loading="lazy" width="1600" height="900" /></div>
+            <div class="body"><h3 style="font-size:1.2rem">{b.title}</h3></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

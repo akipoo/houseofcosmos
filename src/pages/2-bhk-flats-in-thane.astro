@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import M from '../data/media.json';
+---
+<Base title="2 BHK Flats, Apartments for Sale in Thane | House of Cosmos" description="Find premium 2 BHK flats in Thane, including under-construction options with modern amenities, excellent connectivity and future-ready living spaces.">
+  <PageHero title="2 BHK Flats in Thane: Find Your Next Home with House of Cosmos" crumb="2 BHK Flats in Thane" eyebrow="2 BHK Flats in Thane" intro="If you’re looking for a 2 BHK in Thane, you’re in the right place. Thane has become one of Mumbai’s most balanced residential zones, a place where city convenience meets calm surroundings.">
+    <div class="btn-row"><button class="btn btn-gold" data-enquire>Get 2 BHK floor plans</button></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">At House of Cosmos, we craft homes that strike the perfect balance between modern design, efficiency, and lasting comfort.</p>
+        <p>If you’re looking for 2 BHK under-construction flats in Thane, Trividh offers thoughtfully planned homes with smart layouts, quality construction, and easy access to everyday conveniences.</p>
+        <h2 style="margin-top:1.5rem">Why Choose a 2 BHK in Thane?</h2>
+        <p>Thane’s growth is steady and planned. Metro connectivity, new business zones, and improved roads have made it one of the most practical places to buy a home.</p>
+        <ul class="ticks">
+          <li><strong>Great Connectivity:</strong> Quick access to Mumbai through the Eastern Express Highway, Thane Station, and the upcoming Metro line.</li>
+          <li><strong>Ready Social Infrastructure:</strong> Schools, hospitals, malls, and parks are all within short distances.</li>
+          <li><strong>High Value Growth:</strong> As the city expands, 2 BHK flats in Thane continue to show strong appreciation potential.</li>
+        </ul>
+      </div>
+      <div class="photo" style="aspect-ratio:4/3"><img src={M.trividhNight} alt="Trividh, Naupada — 2 BHK flats in Thane" loading="lazy" width="1600" height="1200" /></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTower} alt="Trividh tower" loading="lazy" width="1200" height="1500" /></div>
+      <div>
+        <span class="eyebrow">Featured 2 BHK Project</span>
+        <h2>Our Featured 2 BHK Project: Trividh, Naupada</h2>
+        <p>Located in central Thane, Trividh is a premium address for buyers who want more from their home.</p>
+        <ul class="ticks">
+          <li><strong>Spacious 2 BHK Residences:</strong> Designed to maximize light, air flow, and usable space.</li>
+          <li><strong>Sustainable Design:</strong> An IGBC Platinum-certified development equipped with solar panels, rainwater harvesting, and energy-efficient systems that promote responsible living.</li>
+          <li><strong>Modern Amenities:</strong> Gym, banquet hall, multi-sport turf, EV charging points, and 24×7 security.</li>
+          <li><strong>Prime Location:</strong> Just minutes from Thane Station, Viviana Mall, and key business hubs.</li>
+        </ul>
+        <p>If you’re comparing 2 BHK under-construction flats in Thane, Trividh offers a rare mix of quality, location, and eco-friendly design that sets it apart.</p>
+        <a class="btn btn-gold" href="/trividh/">Explore Trividh →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:860px">
+      <span class="eyebrow">About House of Cosmos</span>
+      <h2>Thoughtful architecture, built to last</h2>
+      <p>House of Cosmos is known for its thoughtful architecture and commitment to sustainability. Our projects blend aesthetics with function, offering homes that are bright, well-ventilated, and built to last. We are among Thane’s trusted developers for eco-friendly homes and future-ready design.</p>
+    </div>
+  </section>
+
+  <Faq title="Frequently Asked Questions (FAQ)" items={[
+    ['What is the average price of 2 BHK flats in Thane?', 'Prices vary based on the location and amenities. Central areas like Naupada and Ghodbunder Road offer premium options starting around ₹1.5 Cr onwards, while under-construction 2 BHK flats in Thane may offer better pre-launch pricing.'],
+    ['Why choose an under-construction 2 BHK in Thane?', 'Under-construction projects often come with flexible payment schedules and introductory rates. They’re ideal if you plan to invest early and benefit from price appreciation before possession.'],
+    ['What makes House of Cosmos different from other developers?', 'House of Cosmos stands apart for its commitment to sustainable architecture, thoughtful planning, and future-ready living. Each project, including Trividh, reflects our focus on long-term value, central connectivity, and IGBC Platinum-certified design that enhances air quality, energy efficiency, and overall well-being.'],
+    ['Are your 2 BHK projects RERA registered?', 'Yes. All House of Cosmos projects, including Trividh, are fully RERA-registered and transparent in compliance and timelines.'],
+    ['Which areas in Thane are best for buying a 2 BHK flat?', 'Popular residential areas like Naupada offer great connectivity and lifestyle infrastructure.'],
+    ['How can I book a site visit for Trividh?', 'You can fill out the form below or call us directly to schedule your visit. Our team will guide you through the location, amenities, and available floor plans.'],
+  ]} />
+  <CtaBand title="Find Your 2 BHK Home Today" text="Explore floor plans, compare prices, and discover why House of Cosmos continues to stand out in Thane’s real estate market. Whether you’re looking for an under-construction 2 BHK in Thane, we’ll help you find a home that fits your lifestyle and future plans." />
+</Base>

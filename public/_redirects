@@ -1,0 +1,16 @@
+# Old WordPress URLs -> new pages (301 keeps Google rankings)
+/YOUR-LINK-HERE      /projects/   301
+/YOUR-LINK-HERE/     /projects/   301
+/tag/*               /blogs/      301
+/category/*          /blogs/      301
+/author/*            /about-us/   301
+/feed                /blogs/      301
+/feed/               /blogs/      301
+/wp-admin/*          /            301
+/wp-login.php        /            301
+/home                /            301
+/home/               /            301
+/jobs              /career/   301
+/jobs/*            /career/   301
+/job/*             /career/   301
+/category/*        /blogs/    301

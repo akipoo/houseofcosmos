@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import TrividhBlocks from '../components/TrividhBlocks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Faq from '../components/Faq.astro';
+import M from '../data/media.json';
+---
+<Base title="3 BHK in Thane for Sale | Premium Flats Near Metro Station in Thane" description="Discover premium 3 BHK flats in Thane, including homes near metro stations with modern amenities and IGBC Platinum-certified design at Trividh, Naupada.">
+  <PageHero title="Trividh by House of Cosmos: Premium 3 BHK Near Metro Station Thane" crumb="3 BHK Flats in Thane" eyebrow="3 BHK Flats in Thane" intro="Explore premium 3 BHK flats in Thane designed for sustainable living.">
+    <div class="btn-row"><button class="btn btn-gold" data-enquire>Get 3 BHK floor plans</button></div>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <p class="lead" style="color:var(--text)">If you are looking for 3 BHK flats in Thane that combine modern luxury, connectivity, and sustainability, Trividh by House of Cosmos stands out as the perfect choice. Located in the heart of Naupada, Thane West, this IGBC Platinum-certified project redefines eco-friendly urban living.</p>
+        <p>Designed by House of Cosmos, one of the leading green building developers in Thane, Trividh offers spacious, future-ready homes just minutes from the proposed Nitin Company Metro Station.</p>
+      </div>
+      <div class="photo" style="aspect-ratio:4/3"><img src={M.trividhNight} alt="Trividh, premium 3 BHK flats near metro station in Thane" loading="lazy" width="1600" height="1200" /></div>
+    </div>
+  </section>
+
+  <section class="section cream">
+    <div class="container split">
+      <div class="photo" style="aspect-ratio:4/5"><img src={M.trividhTower} alt="Trividh tower" loading="lazy" width="1200" height="1500" /></div>
+      <div>
+        <span class="eyebrow">Trividh</span>
+        <h2>Redefining 3 BHK Luxury in Thane</h2>
+        <h3>Smart Sustainable Design</h3>
+        <p>Trividh is more than just a luxury residence, it's a certified green project in Thane designed to enhance your lifestyle while promoting smarter, sustainable living.</p>
+        <ul class="ticks"><li>Solar-powered common areas lower monthly electricity bills.</li><li>The advanced grey-water harvesting system helps reduce water use efficiently.</li><li>Low-VOC materials and natural ventilation ensure healthy indoor air quality.</li></ul>
+        <h3>Thoughtfully Planned Spaces</h3>
+        <p>Each 3 BHK apartment at Trividh is designed with wide windows, cross-ventilation, and natural light to make your home energy-efficient and serene. Jodi flat options are also available for larger families.</p>
+        <h3>Premium Amenities</h3>
+        <p>Enjoy a 10,000 sq. ft. podium with recreational and wellness spaces:</p>
+        <ul class="ticks"><li>Modern Gym & Multipurpose Turf</li><li>Children’s Play Area (Open-to-Sky)</li><li>Elegant Banquet Hall with Outdoor Dining</li><li>EV Charging Stations & Smart Security Systems</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div>
+        <span class="eyebrow">Location</span>
+        <h2>Prime Location Near Metro Station</h2>
+        <p>Trividh offers unmatched connectivity from its central location in Naupada, one of Thane’s most premium residential zones.</p>
+        <ul class="ticks"><li>7 minutes from Thane Railway Station</li><li>Close to Eastern Express Highway and Ghodbunder Road</li><li>1.5 km from the proposed Nitin Company Metro Station</li><li>Near Viviana Mall, Jupiter Hospital, and Talao Pali</li></ul>
+        <p>If convenience and connectivity matter, a 3 BHK near a metro station in Thane like Trividh is the right investment.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Investment</span>
+        <h2>Future-Ready and Value-Driven</h2>
+        <p>Choosing an under-construction 3 BHK in Thane at Trividh means investing in thoughtful design, energy-efficient systems, and future-ready amenities. With its IGBC Platinum certification and central Naupada location, it combines sustainable living with strong growth potential in one of Thane’s most connected neighbourhoods.</p>
+        <h3>Project Highlights</h3>
+        <ul class="ticks"><li>Landmark 3P + 29-Storey Tower in Naupada, Thane West</li><li>IGBC Platinum Certified Sustainable Design</li><li>Spacious 2 BHK & 3 BHK Flats with Jodi Options</li><li>Over 10,000 sq. ft. Lifestyle Podium</li><li>Premium Connectivity and Metro Access</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <Faq title="FAQs About 3 BHK Flats in Thane – Trividh by House of Cosmos" items={[
+    ['Why choose Trividh for a 3 BHK in Thane?', 'Trividh offers luxury and sustainability in equal measure with its IGBC Platinum certification, eco-friendly features, and central location in Naupada.'],
+    ['Is Trividh close to the metro station?', 'Yes. The project is approximately 1.5 km from the proposed Nitin Company Metro Station, ensuring excellent connectivity across Thane and Mumbai.'],
+    ['What amenities are available in Trividh by House of Cosmos?', 'A fully equipped gym, children’s park, banquet hall, EV charging stations, and smart security systems make Trividh a complete urban lifestyle destination.'],
+    ['Are there under-construction 3 BHK flats available?', 'Yes, Trividh offers under-construction 3 BHK and Jodi flats with modern designs and custom layout options.'],
+    ['Is Trividh a green building project in Thane?', 'Absolutely. Trividh is an IGBC Platinum Certified Project by House of Cosmos, one of the most respected green building developers in Thane.'],
+  ]} />
+  <CtaBand title="Experience sustainable luxury" text="Choose Trividh by House of Cosmos, the benchmark for premium 3 BHK flats in Thane near a metro station." />
+</Base>
